@@ -1,6 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
+const shortid = require('shortid');
+const fs = require('fs/promises');
+const path = require('path');
 
 const port = process.env.PORT || 4000;
 
@@ -9,6 +12,26 @@ const app = express();
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
+
+/**
+ * @TODO: No Error handling applied yet. (try catch, global error middleware)
+ */
+app.post('/', async (req, res) => {
+	const player = {
+		...req.body,
+		id: shortid.generate(),
+	};
+
+	const dbLocation = path.resolve('src', 'data.json');
+
+	const data = await fs.readFile(dbLocation);
+	const players = JSON.parse(data);
+
+	players.push(player);
+	await fs.writeFile(dbLocation, JSON.stringify(players));
+
+	res.status(201).json(player);
+});
 
 app.get('/test', (req, res) => {
 	res.status(200).json({ status: 'OK' });
