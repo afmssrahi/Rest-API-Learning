@@ -6,11 +6,15 @@ POST http://localhost:4000
 Content-Type: application/json
 
 {
-    "name": "Tamim",
+    "name": "Mushfique",
     "countrty": "BD",
-    "rank": 2
+    "rank": 3
 }
 
 ###
 
-http://localhost:4000
+GET http://localhost:4000
+
+###
+
+GET http://localhost:4000/3ukW80PEH
