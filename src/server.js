@@ -17,6 +17,27 @@ app.use(express.json());
 /**
  * @TODO: No Error handling applied yet. (try catch, global error middleware)
  */
+app.delete('/:id', async (req, res) => {
+	const id = req.params.id;
+
+	const data = await fs.readFile(dbLocation);
+	const players = JSON.parse(data);
+
+	const player = players.find((item) => item.id == id);
+
+	if (!player) {
+		return res.status(404).json({ massage: 'Player not found' });
+	}
+
+	const newPlayers = players.filter((item) => item.id !== id);
+	await fs.writeFile(dbLocation, JSON.stringify(newPlayers));
+
+	res.status(200).json(player);
+});
+
+/**
+ * @TODO: No Error handling applied yet. (try catch, global error middleware)
+ */
 app.put('/:id', async (req, res) => {
 	const id = req.params.id;
 
