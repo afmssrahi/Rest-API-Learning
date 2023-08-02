@@ -27,3 +27,26 @@ Content-Type: application/json
 {
     "name": "Mashrafi bin Mortuza"
 }
+
+###
+
+PUT http://localhost:4000/iy9b1i844
+Content-Type: application/json
+
+{
+    "name": "mashrafi",
+    "countrty": "BD",
+    "rank": 20
+}
+
+
+###
+
+PUT http://localhost:4000/iy9b1i8
+Content-Type: application/json
+
+{
+    "name": "Sakib",
+    "countrty": "BD",
+    "rank": 1
+}
