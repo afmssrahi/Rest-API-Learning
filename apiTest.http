@@ -18,3 +18,12 @@ GET http://localhost:4000
 ###
 
 GET http://localhost:4000/3ukW80PEH
+
+###
+
+PATCH  http://localhost:4000/iy9b1i844
+Content-Type: application/json
+
+{
+    "name": "Mashrafi bin Mortuza"
+}

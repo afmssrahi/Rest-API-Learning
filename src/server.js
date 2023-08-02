@@ -17,6 +17,30 @@ app.use(express.json());
 /**
  * @TODO: No Error handling applied yet. (try catch, global error middleware)
  */
+app.patch('/:id', async (req, res) => {
+	const id = req.params.id;
+
+	const data = await fs.readFile(dbLocation);
+	const players = JSON.parse(data);
+
+	const player = players.find((item) => item.id == id);
+
+	if (!player) {
+		return res.status(404).json({ massage: 'Player not found' });
+	}
+
+	player.name = req.body.name || player.name;
+	player.country = req.body.country || player.country;
+	player.rank = req.body.rank || player.rank;
+
+	await fs.writeFile(dbLocation, JSON.stringify(players));
+
+	res.status(200).json(player);
+});
+
+/**
+ * @TODO: No Error handling applied yet. (try catch, global error middleware)
+ */
 app.get('/:id', async (req, res) => {
 	const id = req.params.id;
 
