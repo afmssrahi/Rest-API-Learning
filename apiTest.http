@@ -1,7 +1,9 @@
+//health check of this website
 GET http://localhost:4000/test
 
 ###
 
+// Create a player
 POST http://localhost:4000
 Content-Type: application/json
 
@@ -13,14 +15,17 @@ Content-Type: application/json
 
 ###
 
+// Get all player
 GET http://localhost:4000
 
 ###
 
+// Get a single player by id
 GET http://localhost:4000/3ukW80PEH
 
 ###
 
+// Update player information
 PATCH  http://localhost:4000/iy9b1i844
 Content-Type: application/json
 
@@ -42,6 +47,7 @@ Content-Type: application/json
 
 ###
 
+// if playe exist in system, update player information or create a new player
 PUT http://localhost:4000/iy9b1i8
 Content-Type: application/json
 
@@ -54,4 +60,5 @@ Content-Type: application/json
 
 ###
 
+// delete a player single player
 DELETE http://localhost:4000/3ukW80PEH
